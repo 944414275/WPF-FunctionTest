@@ -66,6 +66,5 @@ namespace WpfCommanfTest1
             //降低事件继续向上传递而降低程序性能
             e.Handled = true;
         }
-    }
-
+    } 
 }

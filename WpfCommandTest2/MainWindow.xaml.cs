@@ -19,8 +19,7 @@ namespace WpfCommandTest2
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        public static string ss = "2222";
+    { 
         public MainWindow()
         {
             InitializeComponent();
@@ -28,14 +27,14 @@ namespace WpfCommandTest2
 
         public static RoutedCommand rouutedCommand = new RoutedCommand("Clear", typeof(MainWindow));
         private void cb_Execute(object sender, ExecutedRoutedEventArgs e)
-        {
+        { 
             txt1.Clear();
             //避免事件继续向上传递而降低程序性能
             e.Handled = true;
         }
         //当探测命令是否可执行的时候该方法会被调用
         private void cb_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
+        { 
             if (string.IsNullOrEmpty(txt1.Text))
             {
                 e.CanExecute = false;

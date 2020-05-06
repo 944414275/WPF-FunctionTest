@@ -1,0 +1,15 @@
+﻿<Window x:Class="WpfMVVMLight.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMVVMLight"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding S, Mode=TwoWay}" TextAlignment="Center" Width="100" Height="60"/>
+            <TextBox Text="{Binding S, Mode=OneWay}" TextAlignment="Center" Width="100" Height="60" />
+        </StackPanel> 
+    </Grid>
+</Window>

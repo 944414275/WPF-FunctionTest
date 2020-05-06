@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfRouteEventTest1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfRouteEventTest1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Name="GridRoot" Background="lime" Button.Click="ButtonLeft_Click">
+        <Grid Name="GridA" Margin="10" Background="Blue" Button.Click="ButtonLeft_Click">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Canvas Name="CanvasLeft" Grid.Column="0" Background="red" Margin="10" Button.Click="ButtonLeft_Click">
+                <Button Name="ButtonLeft" Width="65" Height="100" Margin="10" Content="Left" Button.Click="ButtonLeft_Click"/>
+            </Canvas>
+            <!--<Canvas Name="CanvasRight" Grid.Column="1" Background="Yellow" Margin="10">
+                <Button Name="right" Width="65" Height="100" Margin="10" Content="Right" Button.Click="ButtonLeft_Click" Click="Right_Click"/>
+            </Canvas>-->
+        </Grid>
+    </Grid>
+</Window>
