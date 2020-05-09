@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConTaskTest2", "ConTaskTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConRefAndOuttest1", "ConRefAndOuttest1\ConRefAndOuttest1.csproj", "{E61EA72C-C18C-4EAF-9CB5-BEA1752E4EB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConTypeTest1", "ConTypeTest1\ConTypeTest1.csproj", "{C7029588-EB97-432D-BEA9-96C41975DB04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +209,10 @@ Global
 		{E61EA72C-C18C-4EAF-9CB5-BEA1752E4EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E61EA72C-C18C-4EAF-9CB5-BEA1752E4EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E61EA72C-C18C-4EAF-9CB5-BEA1752E4EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7029588-EB97-432D-BEA9-96C41975DB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7029588-EB97-432D-BEA9-96C41975DB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7029588-EB97-432D-BEA9-96C41975DB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7029588-EB97-432D-BEA9-96C41975DB04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
