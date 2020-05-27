@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCommandTest2", "WpfCommandTest2\WpfCommandTest2.csproj", "{848DA995-7EC6-4D8C-BF79-18B1C0E9317A}"
 EndProject
@@ -71,7 +71,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConRefAndOuttest1", "ConRef
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConTypeTest1", "ConTypeTest1\ConTypeTest1.csproj", "{C7029588-EB97-432D-BEA9-96C41975DB04}"
 EndProject
-<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConMySQLTest", "ConMySQLTest\ConMySQLTest.csproj", "{5A8DD8CA-1E0A-4056-8290-F25F0CC7F3FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMySQLTest", "WpfMySQLTest\WpfMySQLTest.csproj", "{84530704-D329-4C75-B6A7-794B0DC3BD64}"
@@ -83,9 +82,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConVirtualTest", "ConVirtualTest\ConVirtualTest.csproj", "{797A986A-9E10-4C84-B956-71FE44BE6E5B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConAbstractTest", "ConAbstractTest\ConAbstractTest.csproj", "{2F372E03-81E2-4A1C-B713-4414C208428C}"
-=======
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConLog4Net", "ConLog4Net\ConLog4Net.csproj", "{8104B375-3ABB-4A7A-B658-2FBD2E693402}"
->>>>>>> 0fb5c2c6981136619e7c9f18df8023e752971e97
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConLog4Net", "ConLog4Net\ConLog4Net.csproj", "{8104B375-3ABB-4A7A-B658-2FBD2E693402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConConfigurationManagerTest", "ConConfigurationManagerTest\ConConfigurationManagerTest.csproj", "{C44EDB8F-7A06-4D2A-90FC-D8C2B5D36387}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -229,7 +229,6 @@ Global
 		{C7029588-EB97-432D-BEA9-96C41975DB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7029588-EB97-432D-BEA9-96C41975DB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7029588-EB97-432D-BEA9-96C41975DB04}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
 		{5A8DD8CA-1E0A-4056-8290-F25F0CC7F3FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5A8DD8CA-1E0A-4056-8290-F25F0CC7F3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A8DD8CA-1E0A-4056-8290-F25F0CC7F3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -246,12 +245,14 @@ Global
 		{2F372E03-81E2-4A1C-B713-4414C208428C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F372E03-81E2-4A1C-B713-4414C208428C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F372E03-81E2-4A1C-B713-4414C208428C}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{8104B375-3ABB-4A7A-B658-2FBD2E693402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8104B375-3ABB-4A7A-B658-2FBD2E693402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8104B375-3ABB-4A7A-B658-2FBD2E693402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8104B375-3ABB-4A7A-B658-2FBD2E693402}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> 0fb5c2c6981136619e7c9f18df8023e752971e97
+		{C44EDB8F-7A06-4D2A-90FC-D8C2B5D36387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C44EDB8F-7A06-4D2A-90FC-D8C2B5D36387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C44EDB8F-7A06-4D2A-90FC-D8C2B5D36387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C44EDB8F-7A06-4D2A-90FC-D8C2B5D36387}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -295,6 +296,7 @@ Global
 		{84530704-D329-4C75-B6A7-794B0DC3BD64} = {C84CD256-3F46-47EB-A5E0-7482062E3705}
 		{797A986A-9E10-4C84-B956-71FE44BE6E5B} = {8D3DEF67-7982-4046-B3E1-DC888CC74FCF}
 		{2F372E03-81E2-4A1C-B713-4414C208428C} = {8D3DEF67-7982-4046-B3E1-DC888CC74FCF}
+		{C44EDB8F-7A06-4D2A-90FC-D8C2B5D36387} = {8D3DEF67-7982-4046-B3E1-DC888CC74FCF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6988F045-251D-41B9-8837-5B803A14ADDE}
