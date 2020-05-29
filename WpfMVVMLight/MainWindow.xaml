@@ -10,6 +10,11 @@
         <StackPanel Orientation="Horizontal">
             <TextBox Text="{Binding S, Mode=TwoWay}" TextAlignment="Center" Width="100" Height="60"/>
             <TextBox Text="{Binding S, Mode=OneWay}" TextAlignment="Center" Width="100" Height="60" />
+            <ListBox ItemsSource="{Binding LogListProp}" ScrollViewer.CanContentScroll="True" SelectedIndex="{Binding SelectIndex_listBoxProp}" Width="300" Height="100">
+                
+            </ListBox>
+            <Button Command="{Binding AddBtn}" Height="60" Width="100"/>
+            <local:ScrollingListBox ItemsSource="{Binding LogListProp}" Height="100" Width="100"/>
         </StackPanel> 
     </Grid>
 </Window>

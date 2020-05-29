@@ -11,6 +11,7 @@ namespace ConConfigurationManagerTest
     {
         static void Main(string[] args)
         {
+            
             string _connectionString = ConfigurationManager.ConnectionStrings["test"].ConnectionString;
             Console.WriteLine(_connectionString);
             Console.ReadKey();
