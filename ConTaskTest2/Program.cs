@@ -54,9 +54,7 @@ namespace ConTaskTest2
             //获得任务的执行结果
             Console.WriteLine("任务执行结果：{0}", getsumtask.Result.ToString());
             #endregion
-
-
-
+             
         }
 
         static int TaskMethod(string name)
