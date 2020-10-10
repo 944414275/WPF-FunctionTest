@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfBindingTest1">
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" x:Key="innerLgbResource">
+        <GradientStop Color="Red" Offset="0.0"/>
+        <GradientStop Color="Red" Offset="0.25"/>
+        <GradientStop Color="Red" Offset="{Binding ElementName=slider,Path=Value}"/>
+        <GradientStop Color="Red" Offset="0.75"/>
+        <GradientStop Color="Red" Offset="1" />
+    </LinearGradientBrush>
+</ResourceDictionary>

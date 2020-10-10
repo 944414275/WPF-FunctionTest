@@ -1,34 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿ using System.Windows; 
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.ComponentModel;
+using System;
 
 namespace WpfCommandTest2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    { 
+    public partial class MainWindow : Window,INotifyPropertyChanged
+    {
+        
+        float flo;
+        public string FloProp 
+        {
+            get { return flo.ToString(); }
+            set
+            {
+                flo = Convert.ToSingle(value);
+                if (PropertyChanged != null)
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs("FloProp"));
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         public static RoutedCommand rouutedCommand = new RoutedCommand("Clear", typeof(MainWindow));
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private void cb_Execute(object sender, ExecutedRoutedEventArgs e)
-        { 
-            txt1.Clear();
+        {
+            
+            FloProp = "10.9999";
+
+            //txt1.Clear();
             //避免事件继续向上传递而降低程序性能
             e.Handled = true;
         }

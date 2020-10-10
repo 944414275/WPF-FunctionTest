@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfRollingTest1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfRollingTest1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Menu Height="25" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top" FontSize="14">
+            <MenuItem Header="本机ID设置" />
+            <MenuItem Header="站传单元在线设置"/> 
+        </Menu>
+        <Canvas VerticalAlignment="Top" Height="46" ClipToBounds="True" Margin="0,23,0,0">
+            <StackPanel Name="StatueWithFireMachine" Margin="7,5,0,0" Height="34" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <StackPanel.RenderTransform>
+                    <TranslateTransform Y="0" /> <!--Y轴为0，沿X轴滚动，即水平移动-->
+                </StackPanel.RenderTransform>
+                <TextBlock FontSize="26" Foreground="Green" Text="与火灾报警控制器通信情况:" Name="text_FireMachineStatue" />
+                
+            </StackPanel>
+            <Canvas.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation From="525" To="0" Duration="0:0:5" RepeatBehavior="Forever"
+                                             Storyboard.TargetName="StatueWithFireMachine"
+                                             Storyboard.TargetProperty="RenderTransform.X"/>
+                        </Storyboard>
+                        <!--<Storyboard>
+                            <DoubleAnimation From="525" To="0" Duration="0:0:5"                                                                                                                    //消失
+                                        RepeatBehavior="Forever"
+                                        Storyboard.TargetName="StatueWithFireMachine"
+                                        Storyboard.TargetProperty="RenderTransform.X"/> --><!--沿着X轴滚动--><!--
+                        </Storyboard>-->
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Canvas.Triggers>
+        </Canvas>
+    </Grid>
+</Window>

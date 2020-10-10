@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfResourcesTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfResourcesTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" x:Key="innerLgbResource">
+            <GradientStop Color="Red" Offset="0.0" />
+            <GradientStop Color="Orange" Offset="0.25" />
+            <GradientStop Color="yellow" Offset="{Binding ElementName=slider,Path=Value}" />
+            <GradientStop Color="Orange" Offset="0.75" />
+            <GradientStop Color="Red" Offset="1" />
+        </LinearGradientBrush>
+
+        <!--
+    可以直接设置Canvas容器的样式调用资源,这样Canvas就不用设置background属性了
+    但是这样对绑定的先后顺序会有影响，在cs文件中会叙述
+     <Style TargetType="Canvas">
+         <Setter Property="Background" Value="{DynamicResource innerLgbResource}"></Setter>
+     </Style>
+    -->
+
+    </Window.Resources>
+    <Canvas x:Name="canvas1" Background="{DynamicResource innerLgbResource}">
+        <Slider Name="slider" Minimum="0" Maximum="1" Value="0.5" TickPlacement="BottomRight" TickFrequency="0.2" Width="100"/>
+        <TextBox Canvas.Left="89" Canvas.Top="132" Height="23" Name="textBox1" Width="120" Text="{Binding ElementName=slider,Path=Value}"/>
+        <Button Canvas.Left="109" Canvas.Top="169" Height="23" Name="button1" Width="75" Click="button1_Click">Button</Button>
+    </Canvas>
+</Window>

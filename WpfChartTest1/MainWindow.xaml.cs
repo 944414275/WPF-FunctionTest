@@ -44,7 +44,7 @@ namespace WpfChartTest1
             source1.SetXYMapping(p => p);
 
             // Add the graph. Colors are not specified and chosen random
-            plotter.AddLineGraph(source1, 2, "Data row");
+            //plotter.AddLineGraph(source1, 2, "Data row");
 
             // Force everyting to fit in view
             plotter.Viewport.FitToView();

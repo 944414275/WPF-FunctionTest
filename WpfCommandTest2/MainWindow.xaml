@@ -19,7 +19,7 @@
             <ColumnDefinition Width="317*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Name="sp1">
-            <TextBox Name="txt1" Margin="5" Height="40"/>
+            <TextBox Name="txt1" Text="{Binding FloProp}" Margin="5" Height="40"/>
             <!--相当于去实现后台的控件属性-->
             <Button Name="btn1" Margin="5" Content="send command" CommandParameter="{Binding RelativeSource={RelativeSource self},Path=Name}" CommandTarget="{Binding ElementName=txt1}" Command="{x:Static local:MainWindow.rouutedCommand}"/>
         </StackPanel>
