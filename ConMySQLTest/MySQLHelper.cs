@@ -17,8 +17,8 @@ namespace ConMySQLTest
         /// <summary>
         /// 连接字符串
         /// </summary>
-        public static readonly string connectionString = ConfigurationManager.AppSettings["ConnectionString"].ToString();
-        public static readonly string conStr = "data source=localhost;database=test;user id=root;password=20200303;pooling=false;charset=utf8";
+        //public static readonly string connectionString = ConfigurationManager.AppSettings["ConnectionString"].ToString();
+        public static readonly string conStr = "server=192.168.1.7;user id=sa;password=123456;database=lk_product";
         /// <summary>
         /// 执行查询操作，返回DataSet
         /// </summary>

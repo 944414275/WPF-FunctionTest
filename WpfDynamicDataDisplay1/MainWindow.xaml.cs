@@ -18,6 +18,8 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using System.ComponentModel;
+using Microsoft.Research.DynamicDataDisplay.Charts;
+using WpfDynamicDataDisplay1.ViewModel;
 
 namespace WpfDynamicDataDisplay1
 {
@@ -69,7 +71,13 @@ namespace WpfDynamicDataDisplay1
             this.DataContext = this;
             //zoomSlider.ValueChanged += zoomSlider_ValueChanged;
             //plotter.MainCanvas.Children.Add(zoomSlider);
-
+            //plotter.AxisGrid.Visibility = Visibility.Hidden;
+            //VerticalAxis axis = new VerticalAxis();
+            //axis.SetConversion(0, 100, 100, 0);
+             
+            //plotter.Children.Add(axis);
+            // this is only an example of visible rectange. Use here rect you actually need.
+            //plotter.Viewport.Visible = new Rect(0, 0, 1, 100);
             InitPoint();
         }
 
@@ -108,5 +116,10 @@ namespace WpfDynamicDataDisplay1
                 this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        private void plotter_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
+        }
     }
 }

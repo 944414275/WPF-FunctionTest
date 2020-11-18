@@ -17,11 +17,12 @@ namespace WpfMSWordTest
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            button1_Click();
         }
 
         private void button1_Click()
@@ -32,7 +33,7 @@ namespace WpfMSWordTest
             MSWord.Document wordDoc;                  //Word文档变量
 
             path = Path.GetFullPath("../../") + "\\MyWord_Print.doc";
-            wordApp = new MSWord.ApplicationClass(); //初始化
+            wordApp = new MSWord.Application(); //初始化
 
             wordApp.Visible = true;//使文档可见
 

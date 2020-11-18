@@ -23,6 +23,12 @@ namespace WpfDynamicDataDisplay
         public MainWindow()
         {
             InitializeComponent();
+            //VerticalAxis axis = new VerticalAxis();
+            //axis.SetConversion(0, 100, 100, 0);
+
+            //plotter.Children.Add(axis);
+            //// this is only an example of visible rectange. Use here rect you actually need.
+            //plotter.Viewport.Visible = new Rect(0, 0, 1, 100);
 
         }
 

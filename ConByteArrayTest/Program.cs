@@ -10,9 +10,10 @@ namespace ConByteArrayTest
         {
 
             //20200930 KOMLA 
-            byte[] rawData = new byte[] { 0X2A , 0XA9, 0XEB, 0X41 };
+            byte[] rawData = new byte[] { 0X27, 0X06, 0X17, 0X43,0X0A,0X32,0XF8,0X42 };
             double S = BitConverter.ToSingle(rawData,0);
 
+            //ystem.Windows.Point _point = new System.Windows.Point(BitConverter.ToDouble(rawData, DACList.Count - 8), BitConverter.ToDouble(rawData, DACList.Count - 4));
 
 
 

@@ -15,11 +15,11 @@ namespace ConMySQLTest
         static void Main(string[] args)
         {
 
-            string s = "0000";
-            int i = Convert.ToInt32(s);
+            //string s = "0000";
+            //int i = Convert.ToInt32(s);
 
 
-            string connstr = "data source=localhost;database=test;user id=root;password=20200303;pooling=false;charset=utf8";
+            string connstr = "data source=localhost;database=test;user id=root;password=123456;pooling=true;charset=utf8;";
             CommandType type = CommandType.StoredProcedure;
             DataTable dataTable = new DataTable();
             dataTable = MySQLHelper.ExecuteDataTable(connstr, type,null);

@@ -10,12 +10,13 @@
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid Margin="20,30,20,20">
-            <d3:Chart Name="plotter"  IsHorizontalNavigationEnabled="False" IsVerticalNavigationEnabled="False" PlotHeight="100" PlotWidth="100" >
+            <d3:Chart Name="plotter" IsHorizontalNavigationEnabled="False" IsVerticalNavigationEnabled="False" PlotHeight="{Binding }" PlotWidth="{Binding }" >
+                 
                 <!--<d3:CircleMarkerGraph Name="circles"/>-->
                 
-                <d3:LineGraph >
+                <!--<d3:LineGraph >
                     
-                </d3:LineGraph> 
+                </d3:LineGraph>--> 
                 
             </d3:Chart>
         </Grid> 

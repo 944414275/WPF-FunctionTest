@@ -12,8 +12,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button x:Name="btn" Background="Aqua"/>
-        <d3:ChartPlotter x:Name="plotter" Grid.Row="1" MainVerticalAxisVisibility="Hidden">
-            <d3:LineGraph LinePen="{Binding PenProp}" DataSource="{Binding LineDataSource}"  /> 
+        <d3:ChartPlotter x:Name="plotter" Grid.Row="1" Visible="{Binding rectProp}" SnapsToDevicePixels="False">
+            <!--<d3:Viewport2D Visible="{Binding rectProp}"/>-->
+            
+            <!--<d3:AxisGrid Visibility="Hidden">  
+            </d3:AxisGrid>-->
+            <!--<d3:ChartPlotter.MainHorizontalAxis>
+                <d3:HorizontalAxis Name="hori" Width="20"/>
+            </d3:ChartPlotter.MainHorizontalAxis>-->
+            <d3:LineGraph LinePen="{Binding PenProp}" DataSource="{Binding LineDataSource}"/>
         </d3:ChartPlotter>
         
     </Grid>
