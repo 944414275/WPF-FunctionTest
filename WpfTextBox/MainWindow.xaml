@@ -1,0 +1,26 @@
+﻿<Window x:Class="WpfTextBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTextBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="74*"/>
+            <ColumnDefinition Width="445*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="263*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="请输入：" TextAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="0,7,0,6.6"/>
+        <TextBox x:Name="textBox" TextChanged="textBox_TextChanged" Grid.RowSpan="1" TextWrapping="Wrap" Grid.Column="1" VerticalAlignment="Center" />
+        
+        <!--<TextBox x:Name="textBox" Grid.RowSpan="1" TextWrapping="Wrap" Text="TextBox" Grid.Column="1" VerticalAlignment="Center" KeyDown="textBox_KeyDown" TextChanged="textBox_TextChanged"/>-->
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="事件记录：" TextAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin="0,6.4,0,5.6"/>
+        <TextBlock x:Name="listBox" Grid.Row="1" Grid.Column="1" Margin="0,0.4,0.4,-0.2"/>
+        <!--<ListBox x:Name="listBox" Grid.Row="1" Grid.Column="1" Margin="0,0.4,0.4,-0.2" MouseRightButtonDown="listBox_MouseRightButtonDown"/>-->
+    </Grid>
+</Window>

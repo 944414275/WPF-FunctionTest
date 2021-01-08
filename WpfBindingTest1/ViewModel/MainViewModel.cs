@@ -1,4 +1,6 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System.Windows.Controls;
 
 namespace WpfBindingTest1.ViewModel
 {
@@ -16,19 +18,40 @@ namespace WpfBindingTest1.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        public MainViewModel()
+        private string s1;
+        public string S1
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            get => s1;
+            set
+            {
+                s1 = value;
+                RaisePropertyChanged("S1");
+            }
         }
+
+        private string s2;
+        public string S2
+        {
+            get => s2;
+            set
+            {
+                s2 = value;
+                RaisePropertyChanged("S2");
+            }
+        }
+        private RelayCommand<TextBox> btn1;
+        public RelayCommand<TextBox> Btn1
+        {
+            get
+            {
+                if (btn1 == null)
+                    btn1 = new RelayCommand<TextBox>(o=>Btn1Fun(o));
+                return btn1;
+            } 
+        }
+        void Btn1Fun(TextBox textBox)
+        { 
+            S2 = textBox.Text;
+        } 
     }
 }

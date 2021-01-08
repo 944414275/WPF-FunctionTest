@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -18,15 +19,18 @@ namespace WebSSLTest1
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) => 
-            WebHost.CreateDefaultBuilder(args)
-            .UseUrls("https://*:5001")
-            .UseKestrel(option =>
-            {
-                option.ConfigureHttpsDefaults(i =>
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            var config = new ConfigurationBuilder()
+                        .SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)//
+                        .AddCommandLine(args)
+                        .Build();
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    i.ServerCertificate = new System.Security.Cryptography.X509Certificates.X509Certificate2("./944414275.top.pfx", "wepe53nqo4jg7");
+                    webBuilder.UseStartup<Startup>();
                 });
-            }).UseStartup<Startup>(); 
+        }    
     }
 }

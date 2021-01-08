@@ -15,12 +15,13 @@ namespace ConMSSQLTest
             //pwd：数据库密码 
             string ss = "Server=DESKTOP-3OCLDF2;DataBase=master;Trusted_Connection=SSPI";
             string constrWin = "Data Source=.;database=master;integrated security=SSPI;";
-            string constrSql = "server=192.168.1.7;database=master;uid=666666;pwd=123456;";
+            string constrKeeperHouseSql = "server=172.16.17.10,6677;database=lk2020;uid=sa;pwd=Smx2655020;";
+            string WINU5SN910P6FOSql = "server=127.0.0.1;database=lk2020;uid=sa;pwd=smx2655020;";
 
             //SqlConnection conn1 = new SqlConnection();
             try
             {
-                SqlConnection conn = new SqlConnection(constrSql);
+                SqlConnection conn = new SqlConnection(constrKeeperHouseSql);
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {

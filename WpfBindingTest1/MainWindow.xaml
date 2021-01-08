@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBindingTest1"
         xmlns:view="clr-namespace:WpfBindingTest1.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"> 
     <Grid>
@@ -13,8 +14,17 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/> 
         </Grid.ColumnDefinitions>
-        <view:UserControl1/>
+        <TextBox x:Name="txt1" InputMethod.PreferredImeState="Off">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction Command="{Binding Btn1}" CommandParameter="{Binding ElementName=txt1}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        <TextBlock Text="{Binding S2}" Grid.Column="1"/>
+        <TextBox Grid.Column="2" InputMethod.PreferredImeState="Off" InputLanguageManager.InputLanguage="en-US"/>
+        <!--<view:UserControl1/>
         <view:UserControl2 Grid.Column="1"/>
-        <view:UserControl3 Grid.Column="2"/>
+        <view:UserControl3 Grid.Column="2"/>-->
     </Grid>
 </Window>

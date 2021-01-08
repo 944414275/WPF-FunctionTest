@@ -13,5 +13,6 @@ namespace WpfBinding
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

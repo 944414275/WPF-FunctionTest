@@ -7,9 +7,9 @@
              xmlns:viewmodel="clr-namespace:WpfBindingTest1.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <viewmodel:VM2/>
-    </UserControl.DataContext> 
+    </UserControl.DataContext>--> 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
