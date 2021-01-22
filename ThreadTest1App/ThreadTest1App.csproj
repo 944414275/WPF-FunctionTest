@@ -44,5 +44,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Minio\Minio.csproj">
+      <Project>{ae02b2d9-bbae-49e6-9ecf-3cd4e2466318}</Project>
+      <Name>Minio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

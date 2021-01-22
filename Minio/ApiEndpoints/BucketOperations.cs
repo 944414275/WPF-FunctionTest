@@ -233,9 +233,7 @@ namespace Minio
                 marker = string.Empty;
             }
             
-            var request = await this.CreateRequest(Method.GET,
-                                                     bucketName)
-                                        .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.GET, bucketName).ConfigureAwait(false);
             request.AddQueryParameter("delimiter",delimiter);
             request.AddQueryParameter("prefix",prefix);
             request.AddQueryParameter("max-keys", "1000");
@@ -283,11 +281,8 @@ namespace Minio
         /// <returns>Task that returns the Bucket policy as a json string</returns>
         public async Task<string> GetPolicyAsync(string bucketName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            IRestResponse response = null;
-
-            var request = await this.CreateRequest(Method.GET, bucketName,
-                                 contentType: "application/json")
-                            .ConfigureAwait(false);
+            IRestResponse response = null; 
+            var request = await this.CreateRequest(Method.GET, bucketName, contentType: "application/json").ConfigureAwait(false);
             request.AddQueryParameter("policy","");
             string policyString = null;
             response = await this.ExecuteTaskAsync(this.NoErrorHandlers, request, cancellationToken).ConfigureAwait(false);
@@ -310,9 +305,7 @@ namespace Minio
         /// <returns>Task to set a policy</returns>
         public async Task SetPolicyAsync(string bucketName, string policyJson, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = await this.CreateRequest(Method.PUT, bucketName,
-                                           contentType: "application/json")
-                                .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.PUT, bucketName,contentType: "application/json").ConfigureAwait(false);
             request.AddQueryParameter("policy","");
             request.AddJsonBody(policyJson);
             IRestResponse response = await this.ExecuteTaskAsync(this.NoErrorHandlers, request, cancellationToken).ConfigureAwait(false);
@@ -327,9 +320,7 @@ namespace Minio
         public async Task<BucketNotification> GetBucketNotificationsAsync(string bucketName, CancellationToken cancellationToken = default(CancellationToken))
         {
             utils.ValidateBucketName(bucketName);
-            var request = await this.CreateRequest(Method.GET,
-                                               bucketName)
-                                    .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.GET,bucketName).ConfigureAwait(false);
             request.AddQueryParameter("notification","");
 
             var response = await this.ExecuteTaskAsync(this.NoErrorHandlers, request, cancellationToken).ConfigureAwait(false);
@@ -350,8 +341,7 @@ namespace Minio
         public async Task SetBucketNotificationsAsync(string bucketName, BucketNotification notification, CancellationToken cancellationToken = default(CancellationToken))
         {
             utils.ValidateBucketName(bucketName);
-            var request = await this.CreateRequest(Method.PUT, bucketName)
-                                .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.PUT, bucketName).ConfigureAwait(false);
             request.AddQueryParameter("notification","");
 
             var bodyString = notification.ToString();
@@ -436,10 +426,8 @@ namespace Minio
 
                             cts.Token.ThrowIfCancellationRequested();
                         }
-                    }
-
-              });
-
+                    } 
+              }); 
         }
     }
 }

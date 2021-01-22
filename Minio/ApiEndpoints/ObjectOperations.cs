@@ -55,11 +55,7 @@ namespace Minio
             {
                 sse.Marshal(headers);
             }
-            var request = await this.CreateRequest(Method.GET,
-                                                bucketName,
-                                                objectName: objectName,
-                                                headerMap: headers)
-                                    .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.GET,bucketName,objectName: objectName,headerMap: headers).ConfigureAwait(false);
             request.ResponseWriter = cb;
 
             var response = await this.ExecuteTaskAsync(this.NoErrorHandlers, request, cancellationToken).ConfigureAwait(false);
@@ -101,11 +97,7 @@ namespace Minio
             {
                 sse.Marshal(headerMap);
             }
-            var request = await this.CreateRequest(Method.GET,
-                                                     bucketName,
-                                                     objectName: objectName,
-                                                     headerMap: headerMap)
-                                .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.GET,bucketName,objectName: objectName,headerMap: headerMap).ConfigureAwait(false);
 
             request.ResponseWriter = cb;
             var response = await this.ExecuteTaskAsync(this.NoErrorHandlers, request, cancellationToken).ConfigureAwait(false);
@@ -179,8 +171,7 @@ namespace Minio
                 long writtenSize = writtenInfo.Length;
                 if (writtenSize != length - tempFileSize)
                 {
-                    throw new IOException(tempFileName + ": unexpected data written.  expected = " + (length - tempFileSize)
-                                           + ", written = " + writtenSize);
+                    throw new IOException(tempFileName + ": unexpected data written.  expected = " + (length - tempFileSize) + ", written = " + writtenSize);
                 }
                 utils.MoveWithReplace(tempFileName, fileName);
             }, sse, cancellationToken).ConfigureAwait(false);
@@ -209,10 +200,7 @@ namespace Minio
             }
             var selectReqBytes = System.Text.Encoding.UTF8.GetBytes(opts.MarshalXML());
 
-            var request = await this.CreateRequest(Method.POST, bucketName,
-                                                    objectName: objectName,
-                                                    headerMap: sseHeaders)
-                                    .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.POST, bucketName,objectName: objectName,headerMap: sseHeaders).ConfigureAwait(false);
             request.AddQueryParameter("select","");
             request.AddQueryParameter("select-type","2");
             request.AddParameter("application/xml", selectReqBytes, ParameterType.RequestBody);
@@ -367,18 +355,14 @@ namespace Minio
         /// <returns></returns>
         private async Task CompleteMultipartUploadAsync(string bucketName, string objectName, string uploadId, Dictionary<int, string> etags, CancellationToken cancellationToken)
         {
-            var request = await this.CreateRequest(Method.POST, bucketName,
-                                                     objectName: objectName)
-                                    .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.POST, bucketName,objectName: objectName).ConfigureAwait(false);
             request.AddQueryParameter("uploadId",$"{uploadId}");
 
             List<XElement> parts = new List<XElement>();
 
             for (int i = 1; i <= etags.Count; i++)
             {
-                parts.Add(new XElement("Part",
-                                       new XElement("PartNumber", i),
-                                       new XElement("ETag", etags[i])));
+                parts.Add(new XElement("Part",new XElement("PartNumber", i),new XElement("ETag", etags[i])));
             }
 
             var completeMultipartUploadXml = new XElement("CompleteMultipartUpload", parts);
@@ -429,9 +413,7 @@ namespace Minio
         /// <returns></returns>
         private async Task<Tuple<ListPartsResult, List<Part>>> GetListPartsAsync(string bucketName, string objectName, string uploadId, int partNumberMarker, CancellationToken cancellationToken)
         {
-            var request = await this.CreateRequest(Method.GET, bucketName,
-                                                     objectName: objectName)
-                                .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.GET, bucketName,objectName: objectName).ConfigureAwait(false);
             request.AddQueryParameter("uploadId",$"{uploadId}");
             if (partNumberMarker > 0)
             {
@@ -471,14 +453,12 @@ namespace Minio
         /// <param name="cancellationToken">Optional cancellation token to cancel the operation</param>
         /// <returns></returns>
         private async Task<string> NewMultipartUploadAsync(string bucketName, string objectName, Dictionary<string, string> metaData, Dictionary<string, string> sseHeaders, CancellationToken cancellationToken = default(CancellationToken))
-        {
-
+        { 
             foreach (KeyValuePair<string, string> kv in sseHeaders)
             {
                 metaData.Add(kv.Key, kv.Value);
             }
-            var request = await this.CreateRequest(Method.POST, bucketName, objectName: objectName,
-                            headerMap: metaData).ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.POST, bucketName, objectName: objectName,headerMap: metaData).ConfigureAwait(false);
             request.AddQueryParameter("uploads","");
 
             var response = await this.ExecuteTaskAsync(this.NoErrorHandlers, request, cancellationToken).ConfigureAwait(false);
@@ -517,12 +497,7 @@ namespace Minio
             {
                 metaData.Add(kv.Key, kv.Value);
             }
-            var request = await this.CreateRequest(Method.PUT, bucketName,
-                                                     objectName: objectName,
-                                                     contentType: contentType,
-                                                     headerMap: metaData,
-                                                     body: data)
-                                    .ConfigureAwait(false);
+            var request = await this.CreateRequest(Method.PUT, bucketName,objectName: objectName,contentType: contentType,headerMap: metaData,body: data).ConfigureAwait(false);
             if (!string.IsNullOrEmpty(uploadId) && partNumber > 0)
             {
                 request.AddQueryParameter("uploadId",$"{uploadId}");

@@ -10,6 +10,8 @@ using WpfMinioTest1.ViewModel;
 using Minio.Exceptions;
 using Microsoft.Win32;
 using Minio.DataModel;
+using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WpfMinioTest1
 {
@@ -24,9 +26,13 @@ namespace WpfMinioTest1
         private static MinioClient _minioClient;
         private static string levelOne = "";
         private static string levelTwo = DateTime.Now.ToShortDateString();
+        string s = @"F:\data\company\device1";
         public MainWindow()
         {
             InitializeComponent();
+
+            bool b=SubDirectoriesExistsAsync(s);
+
         }
 
         /// <summary>
@@ -108,7 +114,12 @@ namespace WpfMinioTest1
                 ViewModelLocator.FileUploadViewModel.FileSize = file.Length;
                 ViewModelLocator.FileUploadViewModel.TotalParts = file.Length / App.MinimumPartSize + 1;//计算出文件总块数
 
-                await minio.PutObjectAsync(bucketName, objectName, filePath, contentType);//上传文件
+                //20210109 插入内容，如果不存在二级、三级内容及内容，直接创建并插入，如果存在二级、三级及对应内容则不插入，并返回标识
+                ObjectStat statObject = await PutObject_Tester(minio, bucketName, objectName, filePath, contentType);
+                Assert.IsTrue(statObject != null);
+                Assert.IsTrue(statObject.MetaData != null);
+                 
+                //await minio.PutObjectAsync(bucketName, objectName, filePath, contentType);//上传文件
                 //await minio.PutObjectAsync();//上传文件
                  
                 Debug.WriteLine("Successfully uploaded " + objectName);
@@ -166,6 +177,55 @@ namespace WpfMinioTest1
             //                                        .WithPrefix(objName)
             //                                        .WithRecursive(recursive);
             //IObservable<Item> observable = minio.ListObjectsAsync(listArgs);
+        }
+    
+        public async static Task<ObjectStat> PutObject_Tester(MinioClient _minio, string bucketName, string objectName, string contentType, string fileName = null, Dictionary<string, string> metaData = null)
+        {
+            int count = 0;
+            IObservable<Item> observable = _minio.ListObjectsAsync(bucketName, "device3", true);
+
+            IDisposable subscription = observable.Subscribe(
+                    item =>
+                    { 
+                        if (item.Key.StartsWith("device3"))
+                        {
+                            count += 1;
+                            Console.WriteLine($"count: {count}");
+                        }
+                    },
+                    ex => Console.WriteLine($"OnError: {ex}"),
+                    () => Console.WriteLine($"Listed all objects in bucket {bucketName}\n"));
+
+             
+            ObjectStat statObject = await _minio.StatObjectAsync(bucketName, "device3");
+            //await _minio.PutObjectAsync(bucketName,objectName,objectName,contentType);
+             
+            Assert.IsNotNull(statObject);
+            Assert.AreEqual(statObject.ObjectName, objectName);
+            //Assert.AreEqual(statObject.Size, file_read_size);
+            if (contentType != null)
+            {
+                Assert.AreEqual(statObject.ContentType, contentType);
+            }
+            return statObject;
+        }
+   
+        public bool SubDirectoriesExistsAsync(string subDirectoriesName)
+        {
+            bool b = false;
+            try
+            {
+                if (Directory.Exists(subDirectoriesName))
+                {
+                    b = true;
+                }
+                else { b = false; }
+            }
+            catch (Exception)
+            {
+                b = false; 
+            }
+            return b;
         }
     }
 }
