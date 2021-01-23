@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspNetCoreStartup.Controllers
 {
+    //[Authorize]
     [ApiController]
     [Route("LKApi/[controller]/[action]")]
     public class GetController : ControllerBase
