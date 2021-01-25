@@ -108,7 +108,7 @@ namespace AspNetCoreStartup.Controllers
         }
 
         [HttpPost]
-        public string PostNine([FromBody] JObject jsonObject)
+        public void PostNine([FromBody] JObject jsonObject)
         {
             //把jsonObject反序列化成dynamic
             string jsonStr = JsonConvert.SerializeObject(jsonObject);
@@ -116,7 +116,7 @@ namespace AspNetCoreStartup.Controllers
             //获取dynamic里边的数据
             string destId = jsonParams.destId;
             string token = jsonParams.token;
-            return "fengcaihongx";
+            //return "fengcaihongx";
         }
     }
     /*webapi接收jobject对象，json在api中的使用非常常见，但是core在api的请求中是不支持
