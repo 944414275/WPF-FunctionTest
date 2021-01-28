@@ -1,0 +1,15 @@
+{
+  "defaultAssembly": "FileUpLoad", // 抽象所在的程序集名称",
+  "components": [ // 描述抽象和 实现的联系
+    {
+      "type": "FileUpLoad.Utility.TokenHelper,FileUpLoad", // 接口的实现类 全名称
+      "services": [
+        {
+          "type": "FileUpLoad.Utility.ITokenHelper" // 接口（抽象）的全名称
+        }
+      ],
+      "instanceScope": "single-instance", // 单例生命周期
+      "injectProperties": true // 是否支持属性注入
+    }
+  ]
+}

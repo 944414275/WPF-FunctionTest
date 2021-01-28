@@ -19,17 +19,20 @@ namespace WpfRefit
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// https://www.944414275.top:44305/api/Get/Get
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            Test();
         }
 
-        public void Test()
+        public async void Test()
         {
-            var gitHubApi = RestService.For<ITestApi>("https://api.xcode.me"); 
+            var gitHubApi = RestService.For<IGetApi>("https://www.944414275.top:44305");
+            var name = await gitHubApi.GetTwo();
         }
     }
 }
