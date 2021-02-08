@@ -50,7 +50,7 @@ namespace FileUpLoad.Filter
                     return;
                 }
 
-                //读取配置文件中 的 秘钥
+                //读取配置文件中的秘钥
                 var secretKey = ConfigurationManager.GetJwtSettings("SecretKey");
                 string token = tokenobj.Split(" ")[1].ToString();//剔除Bearer 
                 string userId = "";

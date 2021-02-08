@@ -14,7 +14,7 @@ namespace FileUpLoad.Utility
         /// </summary>
         /// <param name="encodeJwt">token</param>
         /// <param name="secretKey">secretKey</param>
-        /// <param name="validatePayLoad">自定义各类验证； 是否包含那种申明，或者申明的值</param>
+        /// <param name="validatePayLoad">自定义各类验证;是否包含那种申明，或者申明的值</param>
         /// <returns></returns>
         bool ValiToken(string encodeJwt, string secretKey, Func<Dictionary<string, string>, bool> validatePayLoad = null);
 

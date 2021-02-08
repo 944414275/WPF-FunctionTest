@@ -1,13 +1,13 @@
-{
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:55486/",
-      "sslPort": 44364
+      "applicationUrl": "http://localhost:49903",
+      "sslPort": 44377
     }
   },
-  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
@@ -17,14 +17,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WebSSLTest": {
+    "AspNetCoreJWTTest2": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://172.16.18.73:443;http://172.16.18.73:443"
+      }
     }
   }
 }

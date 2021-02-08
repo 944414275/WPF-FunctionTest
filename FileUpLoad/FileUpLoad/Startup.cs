@@ -55,8 +55,7 @@ namespace FileUpLoad
             //添加过滤器token验证
             services.AddScoped<TokenFilter>();
 
-            #region Jwt配置
-
+            #region Jwt配置 
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
             var jwtSettings = new JwtSettings();
             Configuration.Bind("JwtSettings", jwtSettings);
@@ -83,7 +82,6 @@ namespace FileUpLoad
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey)),
                 };
             });
-
             #endregion
 
             #region SwaggerUi 
@@ -177,8 +175,7 @@ namespace FileUpLoad
             });
 
         }
-
-
+         
         /// <summary>
         /// 1、UseServiceProviderFactory(new AutofacServiceProviderFactory());
         /// 2、public void ConfigureContainer(ContainerBuilder containerBuilder)

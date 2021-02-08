@@ -30,8 +30,7 @@ namespace FileUpLoad.Controllers
         /// </summary>
         /// <param name="_jwtSettingsAccesser"></param>
         /// <param name="tokenHelper"></param>
-        public TestAuthController(IOptions<JwtSettings> _jwtSettingsAccesser
-            , ITokenHelper tokenHelper)
+        public TestAuthController(IOptions<JwtSettings> _jwtSettingsAccesser, ITokenHelper tokenHelper)
         {
             _jwtSettings = _jwtSettingsAccesser.Value;
             _tokenHelper = tokenHelper;
@@ -56,6 +55,8 @@ namespace FileUpLoad.Controllers
             var key = Encoding.UTF8.GetBytes(_jwtSettings.SecretKey);
             var authTime = DateTime.Now;//授权时间
             var expiresAt = authTime.AddDays(30);//过期时间
+
+            //tokenDescripor
             var tokenDescripor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[] {
@@ -70,8 +71,10 @@ namespace FileUpLoad.Controllers
                 //签名证书(秘钥，加密算法)SecurityAlgorithms
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
+
             var token = tokenHandler.CreateToken(tokenDescripor);
             var tokenString = tokenHandler.WriteToken(token);
+            
             var resultMod = new LoginRedisResult
             {
                 AccessToken = tokenString,
