@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Minio;
+using Minio.DataModel;
 using Minio.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -62,7 +63,21 @@ namespace WpfMinioTest2
             //byte[] bs = File.ReadAllBytes("G:\\手机文件\\半身照.jpg");
             //MemoryStream filestream = new MemoryStream(bs);
             #endregion
+            int count = 0;
+            IObservable<Item> observable = _minioClient.ListObjectsAsync("", "", true);
 
+            IDisposable subscription = observable.Subscribe(
+                    item =>
+                    {
+                        if (item.Key.StartsWith(""))
+                        {
+                            count += 1;
+                            Console.WriteLine($"count: {count}");
+                        }
+
+                    },
+                    ex => Console.WriteLine($"OnError: {ex}"),
+                    () => Console.WriteLine($"Listed all objects in bucket {""}\n"));
 
             try
             {

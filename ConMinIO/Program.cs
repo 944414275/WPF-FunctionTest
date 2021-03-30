@@ -80,7 +80,7 @@ namespace ConMinIO
         {
             int count = 0;
             IObservable<Item> observable = minio.ListObjectsAsync(bucketName, prefix, recursive);
-             
+            
             IDisposable subscription = observable.Subscribe(
                     item =>
                     {

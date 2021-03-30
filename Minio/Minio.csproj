@@ -8,9 +8,10 @@
     <DebugType>embedded</DebugType>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <AssemblyOriginatorKeyFile>..\Minio.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
