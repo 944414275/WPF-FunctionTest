@@ -11,6 +11,6 @@ namespace AspNetCoreJWTTest3.Interface
         /// <param name="role"></param>
         /// <returns></returns>
         //string GetToken(string userName, string role);
-        string GetToken(User user);
+        Token GetToken(User user);
     }
 }

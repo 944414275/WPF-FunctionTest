@@ -15,43 +15,56 @@
             </summary>
             <param name="containerBuilder"></param>
         </member>
-        <member name="T:FileUpLoad.Controllers.TestAuthController">
+        <member name="T:FileUpLoad.Controllers.AuthController">
             <summary>
             模拟登录授权、Token验证、Token状态验证
             </summary>
         </member>
-        <member name="M:FileUpLoad.Controllers.TestAuthController.#ctor(Microsoft.Extensions.Options.IOptions{FileUpLoad.Utility.JwtSettings},FileUpLoad.Utility.ITokenHelper)">
+        <member name="M:FileUpLoad.Controllers.AuthController.#ctor(Microsoft.Extensions.Options.IOptions{FileUpLoad.Utility.JwtSettings},FileUpLoad.Utility.ITokenHelper)">
             <summary>
             
             </summary>
             <param name="_jwtSettingsAccesser"></param>
             <param name="tokenHelper"></param>
         </member>
-        <member name="M:FileUpLoad.Controllers.TestAuthController.TestLogin">
+        <member name="M:FileUpLoad.Controllers.AuthController.Login(System.String,System.String)">
+            <summary>
+            登录方法
+            </summary>
+            <param name="username">用户名</param>
+            <param name="password">用户密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:FileUpLoad.Controllers.AuthController.TestLogin">
             <summary>
             登录授权
             </summary>
             <returns></returns>
         </member>
-        <member name="M:FileUpLoad.Controllers.TestAuthController.TestGetUserInfo">
+        <member name="M:FileUpLoad.Controllers.AuthController.TestGetUserInfo">
             <summary>
              获取登录用户信息
             </summary>
             <returns></returns>
         </member>
-        <member name="M:FileUpLoad.Controllers.TestAuthController.TestValiToken(System.String)">
+        <member name="M:FileUpLoad.Controllers.AuthController.TestValiToken(System.String)">
             <summary>
             验证Token
             </summary>
             <param name="tokenStr">token</param>
             <returns></returns>
         </member>
-        <member name="M:FileUpLoad.Controllers.TestAuthController.TestValiTokenState(System.String)">
+        <member name="M:FileUpLoad.Controllers.AuthController.TestValiTokenState(System.String)">
             <summary>
             验证Token 带返回状态
             </summary>
             <param name="tokenStr"></param>
             <returns></returns>
+        </member>
+        <member name="T:FileUpLoad.Controllers.GetController">
+            <summary>
+            [Authorize]
+            </summary>
         </member>
         <member name="M:FileUpLoad.Controllers.GetController.Get(System.String)">
             <summary>
@@ -64,8 +77,30 @@
             <summary>
             没问题
             </summary> 
-            <param name="name"></param>
+            <param ></param>
             <returns></returns>
+        </member>
+        <member name="T:FileUpLoad.Controllers.HomeController">
+            <summary>
+            Home
+            </summary>
+        </member>
+        <member name="M:FileUpLoad.Controllers.HomeController.Index">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FileUpLoad.Controllers.HomeController.Error">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FileUpLoad.Controllers.PostController">
+            <summary>
+            Post
+            </summary>
         </member>
         <member name="M:FileUpLoad.Controllers.PostController.Post(System.String)">
             <summary>
@@ -128,6 +163,25 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:FileUpLoad.Controllers.PostController.PostTen(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FileUpLoad.Controllers.TestController">
+            <summary>
+            Test
+            </summary>
+        </member>
+        <member name="M:FileUpLoad.Controllers.TestController.Get1">
+            <summary>
+            Get1
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:FileUpLoad.Controllers.TestController.Get(System.Int32,System.String)">
             <summary>
             没问题
@@ -157,6 +211,21 @@
             </summary>
             <param name="value"></param>
             <returns></returns>
+        </member>
+        <member name="T:FileUpLoad.Controllers.Student">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FileUpLoad.Controllers.Student.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FileUpLoad.Controllers.Student.Age">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:FileUpLoad.Controllers.UpLoadFilesController">
             <summary>
@@ -214,6 +283,26 @@
             请求接口时进行拦截处理
             </summary>
             <param name="context"></param>
+        </member>
+        <member name="T:FileUpLoad.Model.LoginModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FileUpLoad.Model.LoginModel.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FileUpLoad.Model.LoginModel.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FileUpLoad.Model.LoginModel.RememberMe">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:FileUpLoad.Model.AccountModel">
             <summary>
@@ -464,7 +553,7 @@
             </summary>
             <param name="encodeJwt">token</param>
             <param name="secretKey">secretKey</param>
-            <param name="validatePayLoad">自定义各类验证； 是否包含那种申明，或者申明的值</param>
+            <param name="validatePayLoad">自定义各类验证;是否包含那种申明，或者申明的值</param>
             <returns></returns>
         </member>
         <member name="M:FileUpLoad.Utility.ITokenHelper.ValiTokenState(System.String,System.String,System.Func{System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean},System.Action{System.Collections.Generic.Dictionary{System.String,System.String}})">

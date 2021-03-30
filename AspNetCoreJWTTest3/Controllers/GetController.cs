@@ -4,14 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 namespace AspNetCoreJWTTest3.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]")] 
-    [Authorize]
+    [Route("api/[controller]/[action]")]
+    
     public class GetController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet] 
         public string Get()
         {
-            return "fengcaihong";
+            return "111111111";
         }
+
+        [HttpGet]
+        [Authorize]
+        public string GetTwo()
+        {
+            return "222222222";
+        }
+
     }
 }

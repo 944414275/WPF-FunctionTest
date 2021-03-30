@@ -87,12 +87,12 @@ namespace FileUpLoad
             #region SwaggerUi 
             services.AddSwaggerGen(options =>
             {
-                #region  文档格式化
+                #region 20210220在Configure启动中填写的地址中的v1是小写。所以swagger当然找不到/swagger.json这个文件了 文档格式化
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "V1",
-                    Title = ".NET 5.0",
-                    Description = "基于.NET 5.0实现文件上传下载",
+                    Title = "鲁科物联网服务器接口说明文档",
+                    Description = "Based on Asp.net Core WebApi，Powered By 鲁科物联 www.lk.com",
                     Contact = new OpenApiContact
                     {
                         Name = "komla",
@@ -122,18 +122,18 @@ namespace FileUpLoad
                 });
                 //全局设置
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
                     {
+                        new OpenApiSecurityScheme
                         {
-                            new OpenApiSecurityScheme
+                            Reference = new OpenApiReference
                             {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = "Bearer"
-                                }
-                            },new string[] { }
-                        }
-                    });
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },new string[] { }
+                    }
+                });
                 #endregion
             });
 
@@ -142,14 +142,15 @@ namespace FileUpLoad
             //基于Autofac注入文件上传配置信息
             services.Configure<UpFileOptions>(Configuration.GetSection("UpFileOptions"));
 
-            //设置文件上传大小 最大值不受限制
+            #region 设置文件上传大小 最大值不受限制
             services.Configure<FormOptions>(x =>
             {
                 x.ValueLengthLimit = int.MaxValue;
                 x.MultipartBodyLengthLimit = int.MaxValue;
             });
+            #endregion 
 
-            //JSON 全局配置
+            #region JSON 全局配置
             services.AddControllers().AddNewtonsoftJson(options =>
             {
                 //数据格式按原样输出  --此选项开启默认属性输出 
@@ -167,7 +168,8 @@ namespace FileUpLoad
                 //忽略空值
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
-
+            #endregion
+             
             //关闭参数自动校验,我们需要返回自定义的格式
             services.Configure<ApiBehaviorOptions>((o) =>
             {
@@ -208,25 +210,16 @@ namespace FileUpLoad
             //defaultFilesOptions.DefaultFileNames.Add("swagger/index.html");
 
             ////访问HTML 静态页面
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
             #endregion
              
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            //身份授权认证
-            app.UseAuthentication();
-
+            
             app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            //CORS 中间件必须配置为在对 UseRouting 和 UseEndpoints的调用之间执行。 配置不正确将导致中间件停止正常运行。
-            app.UseCors(AllowSpecificOrigin);
-
-            app.UseAuthorization();
-
+             
             #region komla 20210127 试图设置默认路由
             //app.UseMvc(routes =>
             //{
@@ -236,21 +229,46 @@ namespace FileUpLoad
             //});
             #endregion
              
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                //endpoints.MapControllers();
-            });
+            
              
             app.UseSwagger();
             // 指定站点
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUI(options =>
             {
                 //做出一个限制信息 描述
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                //如果不想带/swagger路径访问的话，就放开下面的注释
+                //options.RoutePrefix = string.Empty;
+                //使用自定义的页面(主要是增加友好的身份认证体验)
+                string path = Path.Combine(env.WebRootPath, "swagger/ui/index.html");
+                if (File.Exists(path)) options.IndexStream = () => new MemoryStream(File.ReadAllBytes(path));
+                //做出一个限制信息 描述
+                //options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
             });
+
+            //身份授权认证
+            app.UseAuthentication();
+            app.UseRouting();
+
+            //CORS 中间件必须配置为在对 UseRouting 和 UseEndpoints的调用之间执行。 配置不正确将导致中间件停止正常运行。
+            app.UseCors(AllowSpecificOrigin);
+
+            app.UseAuthorization();
+
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            //20210225 
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //    //endpoints.MapControllers();
+            //});
         }
     }
 }

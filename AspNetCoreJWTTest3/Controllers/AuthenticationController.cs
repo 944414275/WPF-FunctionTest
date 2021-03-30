@@ -49,7 +49,7 @@ namespace AspNetCoreJWTTest3.Controllers
             if (null != loginUser && loginUser.Password.Equals(pwd))//应该数据库
             {
                 //var _role = loginUser.rool;//可以从数据库获取角色
-                string token = this._iJWTService.GetToken(loginUser);
+                Token token = _iJWTService.GetToken(loginUser);
                 return new JsonResult(new
                 {
                     result = true,

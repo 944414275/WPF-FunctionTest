@@ -1,11 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace FileUpLoad.Controllers
 {
+    /// <summary>
+    /// Post
+    /// </summary>
     [ApiController]
     [Route("api/[controller]/[action]")]
+    [AllowAnonymous]
     public class PostController : ControllerBase
     {
         /// <summary>
@@ -15,6 +20,7 @@ namespace FileUpLoad.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("{id}")]
+        [AllowAnonymous]
         public string Post(string id)
         {
             return "fengcaihongx" + id;
@@ -27,6 +33,7 @@ namespace FileUpLoad.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public string PostTwo(string id)
         {
             return "fengcaihongx" + id;
@@ -38,6 +45,7 @@ namespace FileUpLoad.Controllers
         /// <param name="value"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public string PostThree([FromBody] string value)
         {
             return "fengcaihongx" + value;
@@ -49,6 +57,7 @@ namespace FileUpLoad.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public string PostFour([FromBody] Student model)
         {
             return "fengcaihongx" + model.Name;
@@ -60,6 +69,7 @@ namespace FileUpLoad.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public string PostFive(Student model)
         {
             return "fengcaihongx" + model.Name;
@@ -71,6 +81,7 @@ namespace FileUpLoad.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public string PostSix([FromBody] dynamic model)
         {
             return "fengcaihongx" + model.Name;
@@ -85,6 +96,7 @@ namespace FileUpLoad.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public string PostSeven(dynamic model)
         {
             return "fengcaihongx" + model.name;
@@ -96,6 +108,7 @@ namespace FileUpLoad.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public void PostEight(string company, string devNum, JObject jsonObject)
         {
             //把jsonObject反序列化成dynamic
@@ -108,6 +121,7 @@ namespace FileUpLoad.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public void PostNine([FromBody] JObject jsonObject)
         {
             //把jsonObject反序列化成dynamic
@@ -117,6 +131,23 @@ namespace FileUpLoad.Controllers
             string destId = jsonParams.destId;
             string token = jsonParams.token;
             //return "fengcaihongx";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        public string PostTen(string name,string password)
+        {
+            if(name=="fengcaihong" & password=="1")
+            {
+                return "Ok";
+            }
+            return "false";
         }
     }
     /*webapi接收jobject对象，json在api中的使用非常常见，但是core在api的请求中是不支持

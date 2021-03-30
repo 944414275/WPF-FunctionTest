@@ -10,7 +10,7 @@ namespace AspNetCoreJWTTest3.Model
     /// </summary>
     public class TemporaryData
     {
-        private static List<User> Users = new List<User>() { new User { Code = "001", Name = "fengcaihong", Password = "111111" ,rool="Admin"}, new User { Code = "002", Name = "yangya", Password = "222222", rool = "guster" } };
+        private static List<User> Users = new List<User>() { new User { Code = "001", Name = "hong", Password = "111111" ,rool="Admin"}, new User { Code = "002", Name = "yangya", Password = "222222", rool = "guster" } };
 
         public static User GetUser(string code)
         {

@@ -74,6 +74,14 @@ namespace WpfMinio
             }
         }
 
+        /// <summary>
+        /// 20210310 保存
+        /// </summary>
+        /// <param name="minio"></param>
+        /// <param name="userBucketName"></param>
+        /// <param name="uploadFilePath"></param>
+        /// <param name="saveFileName"></param>
+        /// <returns></returns>
         private static async Task Run(MinioClient minio, string userBucketName, string uploadFilePath, string saveFileName)
         {
             var bucketName = userBucketName;
@@ -96,7 +104,8 @@ namespace WpfMinio
                 ViewModelLocator.Instance.FileUploadViewModel.FileSize = file.Length;
                 ViewModelLocator.Instance.FileUploadViewModel.TotalParts = file.Length / App.MinimumPartSize + 1;//计算出文件总块数
 
-                await minio.PutObjectAsync(bucketName, objectName, filePath, contentType);//上传文件
+                //上传文件
+                await minio.PutObjectAsync(bucketName, objectName, filePath, contentType);
                 Debug.WriteLine("Successfully uploaded " + objectName);
 
             }

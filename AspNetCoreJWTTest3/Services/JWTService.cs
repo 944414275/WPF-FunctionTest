@@ -63,10 +63,10 @@ namespace AspNetCoreJWTTest3.Services
             return new Token { TokenContent=returnToken, Expires = dtNow.AddMinutes(1) }; 
             //return returnToken;
         }
-
-        string IJWTService.GetToken(User user)
-        {
-            throw new NotImplementedException();
-        }
+         
+        //string IJWTService.GetToken(User user)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

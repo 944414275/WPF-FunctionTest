@@ -24,15 +24,13 @@ namespace WpfMinioTest1
         private static string _accessKey = "minioadmin";//授权登录账号
         private static string _secretKey = "minioadmin";//授权登录密码
         private static MinioClient _minioClient;
-        private static string levelOne = "";
-        private static string levelTwo = DateTime.Now.ToShortDateString();
-        string s = @"F:\data\company\device1";
+        //private static string levelOne = "";
+        //private static string levelTwo = DateTime.Now.ToShortDateString();
+        //string s = @"F:\data\company\device1";
         public MainWindow()
         {
-            InitializeComponent();
-
-            bool b=SubDirectoriesExistsAsync(s);
-
+            InitializeComponent(); 
+            //bool b=SubDirectoriesExistsAsync(s); 
         }
 
         /// <summary>
@@ -82,7 +80,7 @@ namespace WpfMinioTest1
             {
                 Dispatcher?.InvokeAsync(async () =>
                 {
-                    await Run(_minioClient, "company1", open.FileName, ViewModelLocator.FileUploadViewModel.FileName);
+                    await Run(_minioClient, "luke", open.FileName, ViewModelLocator.FileUploadViewModel.FileName);
                 });
             }
             catch (Exception ex)
@@ -97,7 +95,8 @@ namespace WpfMinioTest1
             var location = "us-east-1";//地址
             var filePath = uploadFilePath;//上传文件路径
             //var objectName = "device1/"+"20210107/"+saveFileName;//保存文件名
-            var objectName = "device3" + "/" +levelTwo + "/" + saveFileName;
+            //var objectName = "device3" + "/" +levelTwo + "/" + saveFileName;
+            var objectName = "LK500" + "/" + DateTime.Now.ToShortDateString().ToString() + "/" + saveFileName;
             var contentType = ContentTypeHelper.GetContentType(saveFileName.Substring(saveFileName.LastIndexOf('.') + 1));
             var file = new FileInfo(uploadFilePath);
 
@@ -179,10 +178,20 @@ namespace WpfMinioTest1
             //IObservable<Item> observable = minio.ListObjectsAsync(listArgs);
         }
     
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_minio"></param>
+        /// <param name="bucketName"></param>
+        /// <param name="objectName"></param>
+        /// <param name="contentType"></param>
+        /// <param name="fileName"></param>
+        /// <param name="metaData"></param>
+        /// <returns></returns>
         public async static Task<ObjectStat> PutObject_Tester(MinioClient _minio, string bucketName, string objectName, string contentType, string fileName = null, Dictionary<string, string> metaData = null)
         {
             int count = 0;
-            IObservable<Item> observable = _minio.ListObjectsAsync(bucketName, "device3", true);
+            IObservable<Item> observable = _minio.ListObjectsAsync(bucketName, "objectName", true);
 
             IDisposable subscription = observable.Subscribe(
                     item =>

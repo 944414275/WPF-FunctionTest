@@ -2,10 +2,14 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using FileUpLoad.Filter;
 using FileUpLoad.Model;
 using FileUpLoad.Utility;
 using IdentityModel;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -19,7 +23,8 @@ namespace FileUpLoad.Controllers
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class TestAuthController : ControllerBase
+    [AllowAnonymous]
+    public class AuthController : ControllerBase
     {
         //获取JwtSettings对象信息
         private JwtSettings _jwtSettings;
@@ -30,11 +35,51 @@ namespace FileUpLoad.Controllers
         /// </summary>
         /// <param name="_jwtSettingsAccesser"></param>
         /// <param name="tokenHelper"></param>
-        public TestAuthController(IOptions<JwtSettings> _jwtSettingsAccesser, ITokenHelper tokenHelper)
+        public AuthController(IOptions<JwtSettings> _jwtSettingsAccesser, ITokenHelper tokenHelper)
         {
             _jwtSettings = _jwtSettingsAccesser.Value;
             _tokenHelper = tokenHelper;
         }
+
+        /// <summary>
+        /// 登录方法
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <param name="password">用户密码</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<object> Login([FromForm] string username, [FromForm] string password)
+        {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return Ok(new
+                {
+                    Success = false,
+                    Data = "不允许重复登录!"
+                });
+            } 
+            if (username == "admin" && password == "1")
+            {
+                var claims = new Claim[] { new Claim("id", "1") };
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync(principal);
+                return new
+                {
+                    success = true,
+                    data = "登录成功!"
+                };
+            }
+            else
+            {
+                return new
+                {
+                    success = false,
+                    data = "登录失败!"
+                };
+            }
+        }
+
 
         /// <summary>
         /// 登录授权
@@ -42,7 +87,7 @@ namespace FileUpLoad.Controllers
         /// <returns></returns>
         [HttpPost]
         public ResultModel<LoginRedisResult> TestLogin()
-        {
+        { 
             var result = new ResultModel<LoginRedisResult>();
             //测试自己创建的对象
             var user = new AccountModel

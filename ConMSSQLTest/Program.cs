@@ -17,11 +17,12 @@ namespace ConMSSQLTest
             string constrWin = "Data Source=.;database=master;integrated security=SSPI;";
             string constrKeeperHouseSql = "server=172.16.17.10,6677;database=lk2020;uid=sa;pwd=Smx2655020;";
             string WINU5SN910P6FOSql = "server=127.0.0.1;database=lk2020;uid=sa;pwd=smx2655020;";
+            string testMachine = "server=172.16.18.100,6677;database=housekeeper;uid=sa;pwd=smx2655020;";
 
             //SqlConnection conn1 = new SqlConnection();
             try
             {
-                SqlConnection conn = new SqlConnection(constrKeeperHouseSql);
+                SqlConnection conn = new SqlConnection(testMachine);
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {

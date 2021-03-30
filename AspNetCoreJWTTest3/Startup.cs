@@ -36,14 +36,21 @@ namespace AspNetCoreJWTTest3
                     options.TokenValidationParameters = new TokenValidationParameters()
                     { 
                         ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
                         ValidIssuer = _tokenParameter.Issuer,
+
+                        ValidateAudience = true,
                         ValidAudience = _tokenParameter.Audience,//为什么加上这个就可以？？？？？？？？？？？？？？
+
+                        //ValidateLifetime = true,
+
+
+                        ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenParameter.SecurityKey)),
+
+
+
                         //注意这是缓冲过期时间，总的有效时间等于这个时间加上jwt的过期时间，如果不配置，默认是5分钟
-                        ClockSkew = TimeSpan.FromMinutes(1)
+                        //ClockSkew = TimeSpan.FromMinutes(1)
                     };
                 });
         }
@@ -60,7 +67,7 @@ namespace AspNetCoreJWTTest3
 
             app.UseRouting();
 
-            app.UseAuthentication();//认证
+            app.UseAuthentication();//认证在app.UseRouting();之后，app.UseAuthorization();之前
 
             app.UseAuthorization();//授权
 

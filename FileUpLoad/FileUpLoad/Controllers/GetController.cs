@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FileUpLoad.Controllers
 {
-    //[Authorize]
+    /// <summary>
+    /// [Authorize]
+    /// </summary>
     [ApiController]
     [Route("api/[controller]/[action]")]
+    [AllowAnonymous]
     public class GetController : ControllerBase
     {
         /// <summary>
@@ -14,6 +17,7 @@ namespace FileUpLoad.Controllers
         /// <param name="name"></param>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public string Get(string name)
         {
             return "fengcaihong" + name;
@@ -22,9 +26,10 @@ namespace FileUpLoad.Controllers
         /// <summary>
         /// 没问题
         /// </summary> 
-        /// <param name="name"></param>
+        /// <param ></param>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public string GetTwo()
         {
             return "fengcaihong2";
