@@ -12,43 +12,59 @@ namespace ConMinIO
 {
     class Program
     {
-        private static string testStr = "qwertqewrwrwtrreywtrywsdghf";
+        //private static string testStr = "qwertqewrwrwtrreywtrywsdghf";
+        //FileStream fileStream = new FileStream("F:\\data\\rujia\\citanji\\20210331\\132616544640166034", FileMode.OpenOrCreate, System.IO.FileAccess.Read);
+        //static FileStream fileStream = new FileStream("G:\\手机文件\\半身照1.jpg", FileMode.OpenOrCreate, System.IO.FileAccess.Read);
+        //static string filePath = "G:\\手机文件\\半身照1.jpg";
+        //static string filePath1 = "G:\\手机文件\\明朝那些事\\明朝那些事儿_001.mp3";
+        static string filePath2 = "F:\\data\\rujia002\\citanji002\\20210427\\111115.png";
+        static string filePath3 = "F:\\data\\rujia002\\citanji002\\20210427\\112.png";
+        static FileStream fileStream = new FileStream("F:\\Media\\泰安特检院\\手机录屏.mp4", FileMode.OpenOrCreate, System.IO.FileAccess.Read);
+
+
+
         static void Main(string[] args)
         {
-            var minio = new MinioClient("172.16.18.73:9000", "minioadmin", "minioadmin");
-
-            Program.Run(minio).Wait();
-
-            //ListObjects_Test1(minio,"company1","device2",2, false).Wait();
-
+            var minio = new MinioClient("172.16.18.73:9000", "minioadmin", "minioadmin"); 
+            Program.Run(minio).Wait(); 
+            //ListObjects_Test1(minio,"company1","device2",2, false).Wait(); 
             //PutObject_Test1(minio, "company1", "device3").Wait();
             Console.ReadLine();
         }
 
         // File uploader task.
         private async static Task Run(MinioClient minio)
-        { 
-            var companyName = "company1";//一级目录桶名
+        {
             var location = "us-east-1";
+            var companyName = "company15";//一级目录桶名 
             string deviceName = "device1"; //二级目录设备名
             string dateName = DateTime.Now.ToString("yyyyMMdd");//三级目录时间
-            string pictureName = "111112";
+            //string pictureName = "111113.zip";
+            //string pictureName1 = "111115.jpg";
+            string pictureName2 = "111116.mp4";
+
 
             //上面这几个目录都是app上传的，下面组合起来
-            string routeStr = string.Format("{0}/{1}/{2}", deviceName, dateName, pictureName);
+            string routeStr = string.Format("{0}/{1}/{2}", deviceName, dateName, pictureName2);
             //string fullRoute = "";
             //int lev = 0;
             //string fullRoute = ObjectExistsAsync(companyName, routeStr);
 
             //var objectName = "golden-oldies/"+ "dataStr";//第二步改存储文件名，最后一级是文件名，前面是路由文件夹
             //var filePath = "F:\\文档\\202103\\图像识别\\20210201090237.avi";
-            var contentType = "application/zip";
+            //var contentType = "application/x-jpg";
+            //var contentType = "image/jpeg";
+            //var contentType = "image/png";
+            var contentType = "video/mp4";
+
+
+            //string contentType1 = "application/zip";
 
             //byte[] bs = File.ReadAllBytes("F:\\文档\\202103\\图像识别\\20210201090237.avi");
             //MemoryStream filestream = new MemoryStream(bs);
 
-            byte[] array = Encoding.ASCII.GetBytes(testStr);
-            MemoryStream stream = new MemoryStream(array);
+            //byte[] array = Encoding.ASCII.GetBytes(testStr);
+            //MemoryStream stream = new MemoryStream(array);
 
             try
             {
@@ -59,9 +75,12 @@ namespace ConMinIO
                     await minio.MakeBucketAsync(companyName, location);
                 }
                 // Upload a file to bucket.
-                //await minio.PutObjectAsync(companyName, routeStr, filePath, contentType);
-                await minio.PutObjectAsync(companyName, routeStr, stream, stream.Length, contentType);
-
+                //await minio.PutObjectAsync(companyName, routeStr, filePath, contentType);//图片类型
+                //await minio.PutObjectAsync(companyName, routeStr, filePath1, contentType1);//MP3类型
+                //await minio.PutObjectAsync(companyName, routeStr, filePath);
+                await minio.PutObjectAsync(companyName, routeStr, fileStream, fileStream.Length, contentType);//20210428 此方法不加contentType也可以
+                //await minio.PutObjectAsync(companyName, routeStr, filePath3, contentType);
+                 
                 Console.WriteLine("Successfully uploaded " + routeStr);
             }
             catch (MinioException e)

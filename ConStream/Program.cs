@@ -9,7 +9,7 @@ namespace ConStream
         static void Main(string[] args)
         {
             //读取本地文件流
-            FileStream fileStream = new FileStream("F:\\data\\rujia\\citanji\\20210330\\132615418799099802", FileMode.OpenOrCreate, System.IO.FileAccess.Read);
+            FileStream fileStream = new FileStream("F:\\data\\rujia\\citanji\\20210331\\132616544640166034", FileMode.OpenOrCreate, System.IO.FileAccess.Read);
             //FileStream ss=File.Open(@"F:\data\rujia\citanji\20210330\132615418799099802",FileMode.Open);
             //byte[] bytes1 = new byte[5*1024*1024];
             //int num = fileStream.Read(bytes1, 0, bytes1.Length);
