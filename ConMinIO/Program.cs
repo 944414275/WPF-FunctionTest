@@ -20,28 +20,26 @@ namespace ConMinIO
         static string filePath2 = "F:\\data\\rujia002\\citanji002\\20210427\\111115.png";
         static string filePath3 = "F:\\data\\rujia002\\citanji002\\20210427\\112.png";
         static FileStream fileStream = new FileStream("F:\\Media\\泰安特检院\\手机录屏.mp4", FileMode.OpenOrCreate, System.IO.FileAccess.Read);
-
-
-
+        
         static void Main(string[] args)
         {
             var minio = new MinioClient("172.16.18.73:9000", "minioadmin", "minioadmin"); 
             Program.Run(minio).Wait(); 
             //ListObjects_Test1(minio,"company1","device2",2, false).Wait(); 
             //PutObject_Test1(minio, "company1", "device3").Wait();
-            Console.ReadLine();
+            Console.ReadLine(); 
         }
 
         // File uploader task.
         private async static Task Run(MinioClient minio)
         {
             var location = "us-east-1";
-            var companyName = "company15";//一级目录桶名 
-            string deviceName = "device1"; //二级目录设备名
+            var companyName = "1鲁科";//一级目录桶名 
+            string deviceName = "刺探及"; //二级目录设备名
             string dateName = DateTime.Now.ToString("yyyyMMdd");//三级目录时间
             //string pictureName = "111113.zip";
             //string pictureName1 = "111115.jpg";
-            string pictureName2 = "111116.mp4";
+            string pictureName2 = "冯彩虹马国旗.mp4";
 
 
             //上面这几个目录都是app上传的，下面组合起来

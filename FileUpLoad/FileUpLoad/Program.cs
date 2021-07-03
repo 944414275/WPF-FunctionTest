@@ -34,15 +34,15 @@ namespace FileUpLoad
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    //webBuilder.ConfigureKestrel(serverOptions =>
-                    //{
-                    //    serverOptions.Listen(IPAddress.Any, 43358, listenOptions =>
-                    //    {
-                    //        listenOptions.UseHttps(
-                    //            @"G:\ssl证书\IIS\944414275.top.pfx",
-                    //            "wepe53nqo4jg7");
-                    //    });
-                    //}); 
+                    webBuilder.ConfigureKestrel(serverOptions =>
+                    {
+                        serverOptions.Listen(IPAddress.Any, 43358, listenOptions =>
+                        {
+                            listenOptions.UseHttps(
+                                @"G:\\ssl\\IIS\\944414275.top.pfx",
+                                "wepe53nqo4jg7");
+                        });
+                    });
                     webBuilder.UseStartup<Startup>()
                    .ConfigureKestrel(c => c.Limits.MaxRequestBodySize = 1024 * 1024 * 100); // 全局的大小100M
                 }).UseServiceProviderFactory(new AutofacServiceProviderFactory());

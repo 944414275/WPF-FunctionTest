@@ -51,7 +51,7 @@ namespace FileUpLoad
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
-        { 
+        {
             //添加过滤器token验证
             services.AddScoped<TokenFilter>();
 
@@ -120,7 +120,7 @@ namespace FileUpLoad
                     BearerFormat = "JWT",
                     Scheme = "Bearer"
                 });
-                //全局设置
+                ////全局设置
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -140,7 +140,7 @@ namespace FileUpLoad
             #endregion
 
             //基于Autofac注入文件上传配置信息
-            services.Configure<UpFileOptions>(Configuration.GetSection("UpFileOptions"));
+            //services.Configure<UpFileOptions>(Configuration.GetSection("UpFileOptions"));
 
             #region 设置文件上传大小 最大值不受限制
             services.Configure<FormOptions>(x =>
@@ -148,7 +148,7 @@ namespace FileUpLoad
                 x.ValueLengthLimit = int.MaxValue;
                 x.MultipartBodyLengthLimit = int.MaxValue;
             });
-            #endregion 
+            #endregion
 
             #region JSON 全局配置
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -169,7 +169,7 @@ namespace FileUpLoad
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
             #endregion
-             
+
             //关闭参数自动校验,我们需要返回自定义的格式
             services.Configure<ApiBehaviorOptions>((o) =>
             {
@@ -177,7 +177,7 @@ namespace FileUpLoad
             });
 
         }
-         
+
         /// <summary>
         /// 1、UseServiceProviderFactory(new AutofacServiceProviderFactory());
         /// 2、public void ConfigureContainer(ContainerBuilder containerBuilder)
@@ -212,12 +212,12 @@ namespace FileUpLoad
             ////访问HTML 静态页面
             app.UseStaticFiles();
             #endregion
-             
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
              
             #region komla 20210127 试图设置默认路由
@@ -228,8 +228,6 @@ namespace FileUpLoad
             //        "{controller=Home}/{action=Index}/{id?}");
             //});
             #endregion
-             
-            
              
             app.UseSwagger();
             // 指定站点
@@ -247,14 +245,13 @@ namespace FileUpLoad
             });
 
             //身份授权认证
-            app.UseAuthentication();
+            app.UseAuthentication();    
             app.UseRouting();
 
             //CORS 中间件必须配置为在对 UseRouting 和 UseEndpoints的调用之间执行。 配置不正确将导致中间件停止正常运行。
             app.UseCors(AllowSpecificOrigin);
 
             app.UseAuthorization();
-
 
             app.UseEndpoints(endpoints =>
             {

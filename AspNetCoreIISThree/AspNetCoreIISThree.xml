@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNetCoreIISThree</name>
+    </assembly>
+    <members>
+        <member name="T:AspNetCoreIISThree.Controllers.WeatherForecastController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AspNetCoreIISThree.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{AspNetCoreIISThree.Controllers.WeatherForecastController})">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AspNetCoreIISThree.Controllers.WeatherForecastController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AspNetCoreIISThree.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AspNetCoreIISThree.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:AspNetCoreIISThree.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AspNetCoreIISThree.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AspNetCoreIISThree.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:AspNetCoreIISThree.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AspNetCoreIISThree.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            注入服务
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:AspNetCoreIISThree.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            /
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:AspNetCoreIISThree.WeatherForecast">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AspNetCoreIISThree.WeatherForecast.Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AspNetCoreIISThree.WeatherForecast.TemperatureC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AspNetCoreIISThree.WeatherForecast.TemperatureF">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AspNetCoreIISThree.WeatherForecast.Summary">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -14,6 +14,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger/index.html",
       "environmentVariables": {
+        "ASPNETCORE_Kestrel__Certificates__Default__Path": "G:\\ssl\\IIS",
+        "ASPNETCORE_Kestrel__Certificates__Default__Password": "wepe53nqo4jg7",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -21,7 +23,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger/index.html",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "applicationUrl": "https://172.16.18.73:5001;http://172.16.18.73:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

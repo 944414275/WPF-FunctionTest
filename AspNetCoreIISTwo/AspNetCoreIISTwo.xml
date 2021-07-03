@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNetCoreIISTwo</name>
+    </assembly>
+    <members>
+        <member name="T:AspNetCoreIISTwo.Controllers.WeatherForecastController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AspNetCoreIISTwo.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{AspNetCoreIISTwo.Controllers.WeatherForecastController})">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AspNetCoreIISTwo.Controllers.WeatherForecastController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

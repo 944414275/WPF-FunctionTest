@@ -419,14 +419,6 @@
             </summary>
             <param name="services"></param>
         </member>
-        <member name="M:FileUpLoad.Startup.ConfigureContainer(Autofac.ContainerBuilder)">
-            <summary>
-            1、UseServiceProviderFactory(new AutofacServiceProviderFactory());
-            2、public void ConfigureContainer(ContainerBuilder containerBuilder)
-            3、指定允许允许在控制器中获取服务实例 
-            </summary>
-            <param name="containerBuilder"></param>
-        </member>
         <member name="M:FileUpLoad.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
             <summary>
             

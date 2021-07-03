@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>F:\software\WPF-FunctionTest\AspNetCoreIISTwo\AspNetCoreIISTwo.xml</DocumentationFile>
+  </PropertyGroup> 
+</Project>
