@@ -2,11 +2,11 @@
 using Minio;
 using Minio.DataModel;
 using Minio.Exceptions;
-using System;
-using System.Collections.Generic;
+using System; 
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Minio.Examples.Cases;
 
 namespace ConMinIO
 {
@@ -23,8 +23,23 @@ namespace ConMinIO
         
         static void Main(string[] args)
         {
-            var minio = new MinioClient("172.16.18.73:9000", "minioadmin", "minioadmin"); 
-            Program.Run(minio).Wait(); 
+            var minio = new MinioClient("172.16.18.73:9000", "minioadmin", "minioadmin");
+            //Program.Run(minio).Wait();
+            //Minio.Examples.Cases.BucketExists.Run(minio, "audiovideo").Wait();
+
+            // List all the buckets on the server
+            //Minio.Examples.Cases.ListBuckets.Run(minio).Wait();
+
+            // Get object metadata
+            //StatObject.Run(minio, "audiovideo", "1111").Wait();
+
+            // List the objects in the new bucket
+            ListObjects.Run(minio, "audiovideo", "20210712");
+
+
+
+            //ListObjects_Test1(minio, "audiovideo", "测试/20210712");
+
             //ListObjects_Test1(minio,"company1","device2",2, false).Wait(); 
             //PutObject_Test1(minio, "company1", "device3").Wait();
             Console.ReadLine(); 
@@ -39,7 +54,7 @@ namespace ConMinIO
             string dateName = DateTime.Now.ToString("yyyyMMdd");//三级目录时间
             //string pictureName = "111113.zip";
             //string pictureName1 = "111115.jpg";
-            string pictureName2 = "冯彩虹马国旗.mp4";
+            string pictureName2 = "马国旗.mp4";
 
 
             //上面这几个目录都是app上传的，下面组合起来
@@ -93,7 +108,7 @@ namespace ConMinIO
         /// </summary>
         /// <param name="_minio"></param>
         /// <returns></returns>
-        public async static Task ListObjects_Test1(MinioClient minio, string bucketName, string prefix, int numObjects, bool recursive = true)
+        public async static Task ListObjects_Test1(MinioClient minio, string bucketName, string prefix, bool recursive = true)
         {
             int count = 0;
             IObservable<Item> observable = minio.ListObjectsAsync(bucketName, prefix, recursive);

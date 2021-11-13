@@ -19,7 +19,8 @@ namespace ConDateTime
             Console.WriteLine(dt.GetDateTimeFormats('D')[1].ToString());//2021年3月11日，星期四
             Console.WriteLine(dt.GetDateTimeFormats('g')[0].ToString());//2021-03-11 11:31
             Console.WriteLine(dt.ToString("yyyyMMdd")); //20210329
-            Console.ReadLine();
+            Console.WriteLine((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000); //20210329
+            Console.ReadLine(); 
         }
     }
 }

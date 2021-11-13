@@ -16,7 +16,7 @@ namespace AspNetCoreStartup.Controllers
         [HttpGet]
         public string Get(string name)
         {
-            return "fengcaihong"+name;
+            return "fengbi"+name;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace AspNetCoreStartup.Controllers
         [HttpGet]
         public string GetTwo()
         {
-            return "fengcaihong2";
+            return "fengbi";
         }
     }
 }

@@ -1,0 +1,3 @@
+LIBRARY demo 
+EXPORTS AutoFocusA 
+EXPORTS ThresholdImage 
