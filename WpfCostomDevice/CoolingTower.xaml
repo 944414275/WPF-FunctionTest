@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="WpfCostomDevice.CoolingTower"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfCostomDevice"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="normalState">
+                    <Storyboard>
+                        <DoubleAnimation Duration="0:0:0.5" From="0" To="-360" RepeatBehavior="Forever" Storyboard.TargetName="rt" Storyboard.TargetProperty="Angle"></DoubleAnimation>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="gsGreen" Storyboard.TargetProperty="Color">
+                            <DiscreteColorKeyFrame Value="Green" KeyTime="0"></DiscreteColorKeyFrame>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="errorState">
+                    <Storyboard>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="gsRed" RepeatBehavior="Forever" Storyboard.TargetProperty="Color" Duration="0:0:1">
+                            <DiscreteColorKeyFrame Value="Red" KeyTime="0:0:0.5"></DiscreteColorKeyFrame>
+                            <DiscreteColorKeyFrame Value="Gray" KeyTime="0:0:1"></DiscreteColorKeyFrame>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Canvas Width="205" Height="245" Margin="5">
+            <Polygon Points="0,65 40,10 205,10 180,65 " Fill="#EEE"></Polygon>
+            <Path Data="M0 0 A60 15 0 0 0 120 0 L120 25 A60 15 0 0 1 0 25" Canvas.Left="45" Canvas.Top="15">
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop Color="#FFD6D6D6" Offset="0"></GradientStop>
+                        <GradientStop Color="White" Offset="0.52"></GradientStop>
+                        <GradientStop Color="#FFD6D6D6" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+            <Ellipse Width="120" Height="30" Fill="#CCC" Canvas.Left="45"></Ellipse>
+            <Border Canvas.Left="52" Canvas.Top="-38">
+                <Viewbox Width="105" Height="105" RenderTransformOrigin="0.5,0.5">
+                    <Viewbox.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="20" x:Name="rt"></RotateTransform>
+                            <ScaleTransform ScaleY="0.25"></ScaleTransform>
+                        </TransformGroup>
+                    </Viewbox.RenderTransform>
+                    <Path Stretch="Fill" Data="M261.851429 528.822857c-43.885714-24.868571-84.845714-23.405714-121.417143 5.851429-35.108571 26.331429-49.737143 62.902857-43.885715 106.788571 5.851429 38.034286 19.017143 74.605714 40.96 108.251429 21.942857 35.108571 46.811429 59.977143 76.068572 74.605714 78.994286 40.96 147.748571 29.257143 207.725714-35.108571 19.017143-20.48 33.645714-43.885714 46.811429-73.142858 14.628571-32.182857 23.405714-61.44 24.868571-90.697142 0-14.628571 7.314286-21.942857 19.017143-21.942858s19.017143 5.851429 24.868571 16.091429c17.554286 51.2 14.628571 99.474286-10.24 143.36-24.868571 43.885714-21.942857 84.845714 4.388572 119.954286 26.331429 35.108571 62.902857 49.737143 106.788571 42.422857 38.034286-5.851429 74.605714-19.017143 108.251429-40.96 35.108571-21.942857 59.977143-46.811429 74.605714-76.068572 40.96-78.994286 29.257143-147.748571-36.571428-206.262857-20.48-19.017143-43.885714-35.108571-73.142858-48.274285-32.182857-14.628571-61.44-23.405714-90.697142-24.868572-14.628571 0-21.942857-7.314286-21.942858-19.017143s5.851429-20.48 17.554286-23.405714c20.48-7.314286 40.96-11.702857 62.902857-11.702857 27.794286 0 54.125714 7.314286 78.994286 20.48 43.885714 24.868571 84.845714 23.405714 121.417143-4.388572 35.108571-26.331429 49.737143-62.902857 43.885714-106.788571-5.851429-38.034286-19.017143-74.605714-40.96-108.251429-21.942857-35.108571-46.811429-59.977143-76.068571-74.605714-78.994286-40.96-147.748571-29.257143-207.725715 35.108572-19.017143 20.48-33.645714 45.348571-46.811428 73.142857-14.628571 32.182857-23.405714 62.902857-24.868572 90.697143 0 13.165714-7.314286 20.48-19.017142 21.942857s-20.48-5.851429-24.868572-16.091429c-7.314286-20.48-10.24-40.96-10.24-64.365714 0-27.794286 7.314286-54.125714 20.48-78.994286 24.868571-43.885714 21.942857-84.845714-4.388571-119.954286-26.331429-35.108571-61.44-49.737143-105.325715-43.885714-38.034286 5.851429-74.605714 19.017143-108.251428 40.96-35.108571 21.942857-59.977143 46.811429-76.068572 76.068572-40.96 78.994286-29.257143 147.748571 36.571429 207.725714 20.48 19.017143 45.348571 35.108571 73.142857 48.274286 32.182857 14.628571 61.44 21.942857 90.697143 23.405714 14.628571 0 21.942857 7.314286 21.942857 19.017143s-5.851429 20.48-17.554286 24.868571c-49.737143 17.554286-98.011429 14.628571-141.897142-10.24m279.405714-46.811428c8.777143 8.777143 11.702857 17.554286 11.702857 29.257142s-4.388571 21.942857-11.702857 30.72c-8.777143 7.314286-17.554286 11.702857-29.257143 11.702858s-21.942857-4.388571-30.72-11.702858c-8.777143-8.777143-11.702857-19.017143-11.702857-30.72s4.388571-21.942857 11.702857-29.257142c8.777143-8.777143 19.017143-13.165714 30.72-13.165715 11.702857 1.462857 20.48 4.388571 29.257143 13.165715z" Fill="#EEE">
+                    </Path>
+                </Viewbox>
+            </Border>
+            <Grid Width="180" Height="180" Canvas.Top="65" Background="#E0E0E0">
+                <Border VerticalAlignment="Top" Height="140" BorderThickness="10">
+                    <Border.Background>
+                        <DrawingBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="1,0,25,1">
+                            <DrawingBrush.Drawing>
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#EEE"></Pen>
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry>
+                                            <PathFigure>
+                                                <LineSegment Point="10,0"></LineSegment>
+                                                <LineSegment Point="10,10"></LineSegment>
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+                <Grid Height="50" VerticalAlignment="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="DarkGray" Grid.Column="0" Margin="5,0"></Border>
+                    <Border Background="DarkGray" Grid.Column="1" Margin="5,0"></Border>
+                </Grid>
+            </Grid>
+
+            <Grid Width="180" Height="180" Canvas.Top="65" Canvas.Left="180" Background="#E0E0E0">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="0.139"></ScaleTransform>
+                        <SkewTransform AngleY="-65.5"></SkewTransform>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Border VerticalAlignment="Top" Height="140" BorderThickness="10">
+                    <Border.Background>
+                        <DrawingBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="1,0,25,1">
+                            <DrawingBrush.Drawing>
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Pen>
+                                        <Pen Brush="#EEE"></Pen>
+                                    </GeometryDrawing.Pen>
+                                    <GeometryDrawing.Geometry>
+                                        <PathGeometry>
+                                            <PathFigure>
+                                                <LineSegment Point="10,0"></LineSegment>
+                                                <LineSegment Point="10,10"></LineSegment>
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+                </Border>
+                <Grid Height="50" VerticalAlignment="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="DarkGray" Grid.Column="0" Margin="5,0"></Border>
+                    <Border Background="DarkGray" Grid.Column="1" Margin="5,0"></Border>
+                </Grid>
+            </Grid>
+
+            <Border Width="18" Height="18" CornerRadius="10" Canvas.Left="150" Canvas.Top="80">
+                <Border.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Gray" Offset="0.6" x:Name="gsGreen"></GradientStop>
+                        <GradientStop Color="White"></GradientStop>
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border Width="18" Height="18" CornerRadius="10" Canvas.Left="150" Canvas.Top="105">
+                <Border.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Gray" Offset="0.6" x:Name="gsRed"></GradientStop>
+                        <GradientStop Color="White"></GradientStop>
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+        </Canvas>
+    </Viewbox>
+</UserControl>
